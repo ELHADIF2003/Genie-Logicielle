@@ -1,8 +1,10 @@
 # [IDMC - Génie Logicielle]
 ---
-**Auteurs** :   EL HADIF Abderrahmane
-                LAHMAR Mohamed Reda 
-                BASSE Gregory
+**Auteurs** :   EL HADIF Abderrahmane | 
+                LAHMAR Mohamed Reda | 
+                BASSE Gregory | 
+                Mahamat Garba Hadjé Aché | 
+                
                 
 **Promotion** : Master MIAGE - IDMC
 
