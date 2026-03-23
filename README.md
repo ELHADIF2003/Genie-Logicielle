@@ -4,9 +4,10 @@
                 LAHMAR Mohamed Reda | 
                 BASSE Gregory | 
                 Mahamat Garba Hadjé Aché | 
+                KIAZI TSAKA NGOMA Febbe 
                 
                 
-**Promotion** : Master MIAGE - IDMC
+**Promotion** : Master 1 MIAGE - IDMC
 
 ## Projet : Éducation et Performance Académique en France
 Ce projet consiste à réaliser une plateforme interactive permettant aux utilisateurs d’explorer et d’analyser les données éducatives à travers des visualisations graphiques et des indicateurs statistiques[cite: 3].
