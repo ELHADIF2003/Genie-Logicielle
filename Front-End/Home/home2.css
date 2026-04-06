@@ -1,0 +1,138 @@
+/* Styles de base et typographie moderne */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Fond vert dégradé sur la gauche s'estompant vers le blanc */
+  background: linear-gradient(to right, #217346 0%, #FFFFFF 100%);
+  font-family: 'Inter', sans-serif; /* Une police sans-serif nette et moderne */
+  color: #FFFFFF; /* Texte blanc par défaut pour un contraste maximal sur le dégradé */
+}
+
+/* Conteneur principal */
+.home-container {
+  text-align: center;
+  max-width: 1000px;
+}
+
+/* En-tête de page */
+.header-container {
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+p.subtitle {
+  font-size: 1.2rem;
+  color: #E6E6E6; /* Un gris très clair pour le sous-titre */
+  margin-bottom: 3rem;
+}
+
+/* Conteneur des cartes (Grille) */
+.cards-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Styles communs aux cartes (Modernisés) */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 12px; /* Coins plus doux */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Ombre portée très douce */
+  width: 450px;
+  overflow: hidden; /* Pour que la barre d'en-tête suive les arrondis */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Variations de couleur pour la barre supérieure */
+.card-user {
+  border-top: 5px solid #217346; /* Vert Excel principal */
+}
+
+.card-admin {
+  border-top: 5px solid #0B572B; /* Vert plus technique et profond pour l'admin */
+}
+
+/* Corps de la carte (Padding et alignement) */
+.card-body {
+  padding: 2.5rem;
+  text-align: left;
+  flex-grow: 1; /* Permet au contenu de s'étendre verticalement */
+  display: flex;
+  flex-direction: column;
+}
+
+/* En-tête du contenu (Titre et Icône) */
+.card-title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Icônes (utilisez des icônes SVG ou FontAwesome de couleur verte) */
+.card-icon {
+  font-size: 2rem;
+  color: #217346;
+  margin-right: 1rem;
+}
+
+/* Titre de la carte (Gras, couleur du texte de la carte) */
+.card-title {
+  font-size: 1.8rem;
+  color: #333333;
+  margin: 0;
+}
+
+/* Description de la carte (Gris clair pour un design moderne) */
+.card-description {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1; /* Pousse le bouton vers le bas */
+}
+
+/* Conteneur du bouton (pour alignement en bas) */
+.button-container {
+  margin-top: auto;
+}
+
+/* Styles communs aux boutons */
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transition douce pour le hover */
+}
+
+/* Variations de couleur pour les boutons */
+.btn-user {
+  background-color: #217346;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-user:hover {
+  background-color: #1a5a3a; /* Vert plus sombre au survol */
+}
+
+.btn-admin {
+  background-color: #0B572B; /* Vert profond pour l'admin */
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-admin:hover {
+  background-color: #084021; /* Vert technique plus sombre au survol */
+}

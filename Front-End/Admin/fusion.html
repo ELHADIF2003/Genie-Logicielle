@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusionner datasets</title>
+    <link rel="stylesheet" href="admin.css">
+    </head>
+
+    <main class="admin-main">
+    
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <a href="admin_dashboard.html" class="btn-back">
+                    <span class="icon">⬅</span> Retour à l'accueil
+                </a>
+            </div>
+            
+            <div class="navbar-right">
+                <div class="admin-profile">
+                    <div class="avatar-circle">AD</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Admin Principal</span>
+                        <span class="profile-role">Super Admin</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <a href="connexion.html" class="btn-logout">Déconnexion</a>
+            </div>
+        </header>
+
+
+    <div class="main-header">
+        <h1>Fusion des datasets</h1>
+        <p>Croisez les données pour créer la base d'analyse finale</p>
+    </div>
+
+    <section class="dashboard-section">
+        <div class="merge-container">
+            <div class="merge-box">
+                <h4>Dataset Principal</h4>
+                <select class="form-select">
+                    <option>Résultats Bac 2021-2024</option>
+                    <option>IPS établissements</option>
+                </select>
+                <p>Clé de jointure : <br><strong>Code UAI</strong></p>
+            </div>
+
+            <div class="merge-icon-center">
+                <span>➕</span>
+            </div>
+
+            <div class="merge-box">
+                <h4>Dataset Secondaire</h4>
+                <select class="form-select">
+                    <option>IPS établissements</option>
+                    <option>Base académies</option>
+                </select>
+                <p>Clé de jointure : <br><strong>Code UAI</strong></p>
+            </div>
+        </div>
+
+        <div class="merge-actions">
+            <button class="btn-action btn-validate btn-large">Démarrer la fusion</button>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <h3 class="section-title">Progression</h3>
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 0%;"></div> </div>
+        <p class="text-muted text-center mt-2">En attente de démarrage...</p>
+    </section>
+</main>
+
+</html>

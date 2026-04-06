@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body class="user-body">
+
+    <header class="user-navbar">
+        <div class="navbar-brand">
+            <span class="logo-icon">📊</span>
+            <span class="brand-name">IDMC - ÉduData France</span>
+        </div>
+        
+        <nav class="navbar-menu">
+            <a href="accueil_user.html" >Accueil</a>
+            <a href="#" class="active">Carte Interactive</a>
+            <a href="graphiques.html">Graphiques</a>
+            <a href="comparateur.html">Comparateur</a>
+            <a href="data.html">Données brutes</a>
+        </nav>
+
+        <div class="navbar-actions">
+            <!-- <button class="btn-outline-user">📥 Exporter les données</button> -->
+            <div class="divider"></div>
+            <a href="C:\Users\Etudiant\Documents\M1 MIAGE\SEMESTRE 8\GENIE LOGICIEL\projet\Front_End\Home\home.html" class="link-admin">Quitter</a>
+        </div>
+    </header>
+
+
+    <main class="user-main full-height-main">
+    <div class="map-layout">
+        
+        <aside class="map-sidebar">
+            <h2 class="sidebar-title">Exploration Spatiale</h2>
+            <p class="text-muted">Sélectionnez les données à afficher sur la carte.</p>
+
+            <div class="filter-group mt-3">
+                <label>Indicateur affiché</label>
+                <select class="form-select">
+                    <option>Indice de Position Sociale (IPS)</option>
+                    <option>Taux de réussite au Bac</option>
+                    <option>Taux de mention</option>
+                </select>
+            </div>
+
+            <div class="filter-group mt-3">
+                <label>Année scolaire</label>
+                <select class="form-select">
+                    <option>2023 - 2024</option>
+                    <option>2022 - 2023</option>
+                </select>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="academy-details">
+                <h3>Académie sélectionnée</h3>
+                <div class="selected-academy-card">
+                    <h4 class="academy-name">Versailles</h4>
+                    <div class="stat-row">
+                        <span>IPS Moyen :</span>
+                        <strong>108.4</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Taux de réussite :</span>
+                        <strong>92.1 %</strong>
+                    </div>
+                    <button class="btn-outline-user btn-full mt-2">Comparer cette académie</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="map-area">
+            <div class="map-placeholder">
+                <div class="map-icon">🗺️</div>
+                <p>La carte interactive s'affichera ici (Intégration Leaflet/D3.js)</p>
+            </div>
+
+            <div class="map-legend">
+                <h4>Légende (IPS)</h4>
+                <div class="legend-scale">
+                    <span class="scale-color" style="background: #E6F4EA;"></span>
+                    <span class="scale-color" style="background: #A8D5BA;"></span>
+                    <span class="scale-color" style="background: #5CB85C;"></span>
+                    <span class="scale-color" style="background: #217346;"></span>
+                    <span class="scale-color" style="background: #0B572B;"></span>
+                </div>
+                <div class="legend-labels">
+                    <span>< 90</span>
+                    <span>> 120</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+</html>

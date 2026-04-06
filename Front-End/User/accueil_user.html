@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploration - Plateforme Éducative</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body class="user-body">
+
+    <header class="user-navbar">
+        <div class="navbar-brand">
+            <span class="logo-icon">📊</span>
+            <span class="brand-name">IDMC - ÉduData France</span>
+        </div>
+        
+        <nav class="navbar-menu">
+            <a href="#" class="active">Accueil</a>
+            <a href="carte.html">Carte Interactive</a>
+            <a href="graphiques.html">Graphiques</a>
+            <a href="comparateur.html">Comparateur</a>
+            <a href="data.html">Données brutes</a>
+        </nav>
+
+        <div class="navbar-actions">
+            <!-- <button class="btn-outline-user">📥 Exporter les données</button> -->
+            <div class="divider"></div>
+            <a href="C:\Users\Etudiant\Documents\M1 MIAGE\SEMESTRE 8\GENIE LOGICIEL\projet\Front_End\Home\home.html" class="link-admin">Quitter</a>
+        </div>
+    </header>
+
+    <main class="user-main">
+        
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Analysez les inégalités éducatives</h1>
+                <p>Explorez les résultats du baccalauréat et l'Indice de Position Sociale (IPS) à travers la France.</p>
+            </div>
+
+            <div class="global-filters">
+                <div class="filter-group">
+                    <label>Année</label>
+                    <select class="form-select">
+                        <option>2023 - 2024</option>
+                        <option>2022 - 2023</option>
+                        <option>Toutes les années</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Académie</label>
+                    <select class="form-select">
+                        <option>Toute la France</option>
+                        <option>Paris</option>
+                        <option>Créteil</option>
+                        <option>Versailles</option>
+                        <option>Lyon</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Indicateur clé</label>
+                    <select class="form-select">
+                        <option>Taux de réussite au Bac</option>
+                        <option>IPS Moyen</option>
+                        <option>Taux de mention</option>
+                    </select>
+                </div>
+                <button class="btn-user-primary">Actualiser les données</button>
+            </div>
+        </section>
+
+        <section class="overview-section">
+            <h2 class="section-title">Aperçu National (2023-2024)</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card user-kpi">
+                    <span class="kpi-value">91.4 %</span>
+                    <span class="kpi-label">Taux de réussite national</span>
+                </div>
+                <div class="kpi-card user-kpi">
+                    <span class="kpi-value">103.5</span>
+                    <span class="kpi-label">IPS Moyen National</span>
+                </div>
+                <div class="kpi-card user-kpi">
+                    <span class="kpi-value">30</span>
+                    <span class="kpi-label">Académies analysées</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2 class="section-title">Outils d'exploration</h2>
+            <div class="features-grid">
+                
+                <a href="#" class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Carte Interactive</h3>
+                    <p>Visualisez la répartition géographique des indicateurs de réussite et sociaux sur le territoire français.</p>
+                </a>
+
+                <a href="#" class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Analyses & Graphiques</h3>
+                    <p>Plongez dans les détails avec des diagrammes, des courbes d'évolution et des nuages de points de corrélation.</p>
+                </a>
+
+                <a href="#" class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Comparateur d'académies</h3>
+                    <p>Sélectionnez deux académies ou plus pour confronter directement leurs indicateurs éducatifs.</p>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

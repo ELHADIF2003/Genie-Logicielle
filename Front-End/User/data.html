@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de données</title>
+    <link rel="stylesheet" href="user.css">
+
+    </head>
+
+    <body class="user-body">
+
+        <header class="user-navbar">
+        <div class="navbar-brand">
+            <span class="logo-icon">📊</span>
+            <span class="brand-name">IDMC - ÉduData France</span>
+        </div>
+        
+        <nav class="navbar-menu">
+            <a href="accueil_user.html" >Accueil</a>
+            <a href="carte.html">Carte Interactive</a>
+            <a href="graphiques.html">Graphiques</a>
+            <a href="comparateur.html" >Comparateur</a>
+            <a href="#" class="active">Données brutes</a>
+        </nav>
+
+        <div class="navbar-actions">
+            <!-- <button class="btn-outline-user">📥 Exporter les données</button> -->
+            <div class="divider"></div>
+            <a href="C:\Users\Etudiant\Documents\M1 MIAGE\SEMESTRE 8\GENIE LOGICIEL\projet\Front_End\Home\home.html" class="link-admin">Quitter</a>
+        </div>
+    </header>
+
+
+    <main class="user-main">
+    <div class="page-header text-center">
+        <h1>Catalogue en Open Data</h1>
+        <p>Téléchargez les jeux de données brutes utilisés par notre plateforme pour vos propres analyses.</p>
+    </div>
+
+    <div class="license-info mb-4">
+        <span class="info-icon">🔓</span>
+        <p>Toutes nos données sont publiées sous <strong>Licence Ouverte (Etalab)</strong>. Vous êtes libre de les réutiliser, croiser et partager, sous réserve de mentionner la source.</p>
+    </div>
+
+    <div class="data-catalog">
+        
+        <div class="dataset-card">
+            <div class="dataset-icon">📄</div>
+            <div class="dataset-content">
+                <h3>Résultats du Baccalauréat par établissement</h3>
+                <p>Données exhaustives comprenant les taux de réussite, taux de mention et effectifs pour les séries générales et technologiques.</p>
+                <div class="dataset-meta">
+                    <span class="meta-tag format-csv">CSV</span>
+                    <span class="meta-tag">Mis à jour : Mars 2026</span>
+                    <span class="meta-tag">Taille : 4.2 Mo</span>
+                    <span class="meta-tag">~ 48 000 lignes</span>
+                </div>
+            </div>
+            <div class="dataset-action">
+                <a href="chemin/vers/resultats_bac.csv" download class="btn-user-primary btn-download">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+
+        <div class="dataset-card">
+            <div class="dataset-icon">📄</div>
+            <div class="dataset-content">
+                <h3>Indice de Position Sociale (IPS)</h3>
+                <p>Indice reflétant le profil social des élèves de chaque lycée, permettant de mesurer la mixité ou la ségrégation scolaire.</p>
+                <div class="dataset-meta">
+                    <span class="meta-tag format-csv">CSV</span>
+                    <span class="meta-tag">Mis à jour : Mars 2026</span>
+                    <span class="meta-tag">Taille : 2.8 Mo</span>
+                    <span class="meta-tag">~ 31 400 lignes</span>
+                </div>
+            </div>
+            <div class="dataset-action">
+                <a href="chemin/vers/ips_lycees.csv" download class="btn-user-primary btn-download">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+
+        <div class="dataset-card">
+            <div class="dataset-icon">🗺️</div>
+            <div class="dataset-content">
+                <h3>Référentiel des Académies</h3>
+                <p>Table de correspondance entre les codes départements, les régions académiques et les zones de vacances.</p>
+                <div class="dataset-meta">
+                    <span class="meta-tag format-csv">CSV</span>
+                    <span class="meta-tag">Mis à jour : Janvier 2026</span>
+                    <span class="meta-tag">Taille : 15 Ko</span>
+                    <span class="meta-tag">30 lignes</span>
+                </div>
+            </div>
+            <div class="dataset-action">
+                <a href="chemin/vers/academies.csv" download class="btn-user-primary btn-download">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+    </body>
+
+
+</html>
