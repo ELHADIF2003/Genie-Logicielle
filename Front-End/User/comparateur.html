@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparateur</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body class="user-body">
+
+    <header class="user-navbar">
+        <div class="navbar-brand">
+            <span class="logo-icon">📊</span>
+            <span class="brand-name">IDMC - ÉduData France</span>
+        </div>
+        
+        <nav class="navbar-menu">
+            <a href="accueil_user.html" >Accueil</a>
+            <a href="carte.html">Carte Interactive</a>
+            <a href="graphiques.html">Graphiques</a>
+            <a href="#" class="active">Comparateur</a>
+            <a href="data.html">Données brutes</a>
+        </nav>
+
+        <div class="navbar-actions">
+            <!-- <button class="btn-outline-user">📥 Exporter les données</button> -->
+            <div class="divider"></div>
+            <a href="C:\Users\Etudiant\Documents\M1 MIAGE\SEMESTRE 8\GENIE LOGICIEL\projet\Front_End\Home\home.html" class="link-admin">Quitter</a>
+        </div>
+    </header>
+
+
+    <main class="user-main">
+    <div class="page-header text-center">
+        <h1>Comparateur d'Académies</h1>
+        <p>Sélectionnez deux académies pour confronter leurs performances et leur profil social.</p>
+    </div>
+
+    <div class="comparator-selectors">
+        <div class="selector-box">
+            <div class="academy-badge badge-a">Académie A</div>
+            <select class="form-select select-large">
+                <option>Créteil</option>
+                </select>
+        </div>
+        
+        <div class="vs-circle">VS</div>
+        
+        <div class="selector-box">
+            <div class="academy-badge badge-b">Académie B</div>
+            <select class="form-select select-large">
+                <option>Versailles</option>
+                </select>
+        </div>
+    </div>
+
+    <div class="comparison-results mt-4">
+        
+        <div class="comparison-row">
+            <div class="comp-title">Indice de Position Sociale (IPS)</div>
+            <div class="comp-bars">
+                <div class="comp-stat stat-left">
+                    <span class="stat-val">98.5</span>
+                    <div class="bar-container"><div class="bar fill-a" style="width: 75%;"></div></div>
+                </div>
+                <div class="comp-stat stat-right">
+                    <div class="bar-container reverse"><div class="bar fill-b" style="width: 85%;"></div></div>
+                    <span class="stat-val">108.4</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-row">
+            <div class="comp-title">Taux de réussite au Bac</div>
+            <div class="comp-bars">
+                <div class="comp-stat stat-left">
+                    <span class="stat-val">89.2 %</span>
+                    <div class="bar-container"><div class="bar fill-a" style="width: 89%;"></div></div>
+                </div>
+                <div class="comp-stat stat-right">
+                    <div class="bar-container reverse"><div class="bar fill-b" style="width: 92%;"></div></div>
+                    <span class="stat-val">92.1 %</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+</html>

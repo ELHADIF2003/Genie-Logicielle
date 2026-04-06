@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord Admin - Plateforme Éducative</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-dashboard-body">
+
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <h2>Administration</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="active">Tableau de bord</a></li>
+                <li><a href="import.html">Importer les datasets</a></li>
+                <li><a href="#">Mettre à jour les données</a></li>
+                <li><a href="nettoyage.html">Nettoyer les données</a></li>
+                <li><a href="fusion.html">Fusionner les datasets</a></li>
+                <li><a href="#">Valider les données</a></li>
+                <li><a href="#">Gérer la base de données</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="connexion.html" class="back-home">⬅ Déconnexion</a>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        
+        <header class="main-header">
+            <h1>Tableau de bord administrateur</h1>
+            <p>Gestion technique et suivi des données de la plateforme</p>
+        </header>
+
+        <section class="dashboard-section">
+            <h3 class="section-title">État du système</h3>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>Serveur</h4>
+                    <span class="status-text success">Opérationnel</span>
+                </div>
+                <div class="kpi-card">
+                    <h4>Base de données</h4>
+                    <span class="status-text success">Connectée</span>
+                </div>
+                <div class="kpi-card">
+                    <h4>Taux d'import</h4>
+                    <span class="status-text neutral">97 %</span>
+                </div>
+                <div class="kpi-card alert-card">
+                    <h4>Anomalies détectées</h4>
+                    <span class="status-text warning">3 alertes</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h3 class="section-title">Suivi des datasets</h3>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Dataset</th>
+                            <th>État</th>
+                            <th>Nombre de lignes</th>
+                            <th>Taux de complétude</th>
+                            <th>Doublons</th>
+                            <th>Dernière mise à jour</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Résultats Bac 2021-2024</td>
+                            <td><span class="badge success">Validé</span></td>
+                            <td>48 200</td>
+                            <td>98 %</td>
+                            <td>12</td>
+                            <td>22/03/2026</td>
+                        </tr>
+                        <tr>
+                            <td>IPS établissements</td>
+                            <td><span class="badge success">Validé</span></td>
+                            <td>31 450</td>
+                            <td>96 %</td>
+                            <td>8</td>
+                            <td>22/03/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Base académies</td>
+                            <td><span class="badge warning">À vérifier</span></td>
+                            <td>30</td>
+                            <td>90 %</td>
+                            <td>0</td>
+                            <td>21/03/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h3 class="section-title">Actions rapides</h3>
+            <div class="actions-card">
+                <div class="upload-group">
+                    <input type="file" id="dataset-upload" class="file-input">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-action">Importer</button>
+                    <button class="btn-action">Démarrer le nettoyage</button>
+                    <button class="btn-action">Fusionner les datasets</button>
+                    <button class="btn-action btn-validate">Valider les données</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

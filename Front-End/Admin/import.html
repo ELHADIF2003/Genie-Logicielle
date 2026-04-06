@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importer datasets</title>
+    <link rel="stylesheet" href="admin.css">
+
+    </head>
+
+    <main class="admin-main">
+    
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <a href="admin_dashboard.html" class="btn-back">
+                    <span class="icon">⬅</span> Retour à l'accueil
+                </a>
+            </div>
+            
+            <div class="navbar-right">
+                <div class="admin-profile">
+                    <div class="avatar-circle">AD</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Admin Principal</span>
+                        <span class="profile-role">Super Admin</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <a href="connexion.html" class="btn-logout">Déconnexion</a>
+            </div>
+        </header>
+
+    <div class="main-header">
+         <h1>Importer des datasets</h1>
+        <p>Ajoutez de nouveaux fichiers CSV ou Excel à la plateforme</p>
+        
+    </div>
+
+    <section class="dashboard-section">
+        <div class="upload-zone" id="drop-zone">
+            <span class="upload-icon">📁</span>
+            <h3>Glissez et déposez vos fichiers ici</h3>
+            <p>ou</p>
+            <label for="file-upload" class="btn-action">Parcourir les fichiers</label>
+            <input type="file" id="file-upload" accept=".csv, .xlsx" multiple hidden>
+            <p class="upload-hint">Formats acceptés : CSV, XLSX (Max 50 Mo)</p>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <h3 class="section-title">Fichiers en attente d'importation</h3>
+        <div class="table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Nom du fichier</th>
+                        <th>Taille</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>resultats_bac_2025.csv</td>
+                        <td>2.4 Mo</td>
+                        <td><span class="badge success">Prêt</span></td>
+                        <td><button class="btn-small action-delete">Retirer</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="action-footer">
+            <button class="btn-action btn-validate">Lancer l'importation de tous les fichiers</button>
+        </div>
+    </section>
+</main>
+</html>

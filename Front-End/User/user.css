@@ -1,0 +1,624 @@
+/* ==========================================================================
+   BASE & TYPOGRAPHIE (Espace Utilisateur)
+   ========================================================================== */
+* { box-sizing: border-box; }
+
+body.user-body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: #333333;
+    background-color: #F8FAF9; /* Fond gris/vert très lumineux */
+}
+
+a { text-decoration: none; }
+
+/* ==========================================================================
+   BARRE DE NAVIGATION HORIZONTALE (Navbar)
+   ========================================================================== */
+.user-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 0 3rem;
+    height: 70px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0B572B; /* Vert profond */
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+}
+
+.navbar-menu a {
+    color: #666666;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid transparent; /* Pour l'effet au survol/actif */
+    transition: all 0.2s ease;
+}
+
+.navbar-menu a:hover {
+    color: #217346;
+}
+
+.navbar-menu a.active {
+    color: #217346;
+    border-bottom-color: #217346; /* Ligne verte sous le lien actif */
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background-color: #EAEFEA;
+}
+
+.link-admin {
+    color: #888;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+.link-admin:hover { color: #333; }
+
+/* ==========================================================================
+   BOUTONS UTILISATEUR
+   ========================================================================== */
+.btn-outline-user {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D9D4;
+    color: #333;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline-user:hover {
+    border-color: #217346;
+    color: #217346;
+    background-color: #F4F7F6;
+}
+
+.btn-user-primary {
+    background-color: #217346;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: 100%; /* S'aligne avec les filtres */
+}
+
+.btn-user-primary:hover {
+    background-color: #1a5a3a;
+}
+
+/* ==========================================================================
+   CONTENU PRINCIPAL ET EN-TÊTE (HERO)
+   ========================================================================== */
+.user-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #E6F4EA 0%, #F8FAF9 100%);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    border: 1px solid #EAEFEA;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: #0B572B;
+    margin: 0 0 1rem 0;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 3rem auto; /* Laisse de la place pour les filtres */
+}
+
+/* ==========================================================================
+   BARRE DE FILTRES GLOBAUX
+   ========================================================================== */
+.global-filters {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.5rem;
+    background-color: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    position: absolute;
+    bottom: -30px; /* Fait déborder la barre sur la section suivante */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 0.4rem;
+}
+
+.form-select {
+    padding: 0.7rem;
+    border: 1px solid #D1D9D4;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-select:focus {
+    border-color: #217346;
+}
+
+/* ==========================================================================
+   SECTIONS & GRILLES
+   ========================================================================== */
+.section-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Chiffres clés */
+.overview-section {
+    margin-top: 5rem; /* Espace pour compenser la barre de filtre qui déborde */
+    margin-bottom: 4rem;
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.user-kpi {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #EAEFEA;
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #217346; /* Vert Excel */
+    margin-bottom: 0.5rem;
+}
+
+.kpi-label {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Cartes Fonctionnalités */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #EAEFEA;
+    transition: all 0.3s ease;
+    display: block; /* Pour le lien <a> */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Effet de soulèvement */
+    box-shadow: 0 12px 25px rgba(33, 115, 70, 0.1);
+    border-color: #217346;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    color: #0B572B;
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+
+
+
+/* ==========================================================================
+   VUE CARTE INTERACTIVE
+   ========================================================================== */
+.full-height-main {
+    height: calc(100vh - 70px); /* Hauteur de l'écran moins la navbar */
+    padding: 0;
+    max-width: none;
+}
+
+.map-layout {
+    display: flex;
+    height: 100%;
+}
+
+.map-sidebar {
+    width: 320px;
+    background-color: #FFFFFF;
+    border-right: 1px solid #EAEFEA;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+    z-index: 2; /* Au-dessus de la carte */
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    color: #0B572B;
+    margin: 0 0 0.5rem 0;
+}
+
+.sidebar-divider {
+    border: 0;
+    height: 1px;
+    background-color: #EAEFEA;
+    margin: 2rem 0;
+}
+
+.selected-academy-card {
+    background-color: #F8FAF9;
+    border: 1px solid #D1D9D4;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.academy-name { margin: 0 0 1rem 0; color: #217346; font-size: 1.3rem;}
+.stat-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #555; }
+.stat-row strong { color: #333; font-size: 1.1rem; }
+.btn-full { width: 100%; margin-top: 1rem; }
+
+.map-area {
+    flex-grow: 1;
+    position: relative;
+    background-color: #E5E9EC; /* Couleur de fond carte (l'océan) */
+}
+
+.map-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #888;
+    background-image: radial-gradient(#D1D9D4 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.map-placeholder .map-icon { font-size: 4rem; opacity: 0.5; margin-bottom: 1rem; }
+
+.map-legend {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: #FFFFFF;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.map-legend h4 { margin: 0 0 0.5rem 0; font-size: 0.9rem; color: #333; }
+.legend-scale { display: flex; width: 200px; height: 12px; border-radius: 6px; overflow: hidden; }
+.scale-color { flex: 1; }
+.legend-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; margin-top: 0.3rem; }
+
+/* ==========================================================================
+   VUE GRAPHIQUES & ANALYSES
+   ========================================================================== */
+.page-header { margin-bottom: 2rem; }
+.page-header h1 { color: #0B572B; margin-bottom: 0.5rem; }
+
+.charts-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #EAEFEA;
+}
+
+.row-filter { flex-direction: row; align-items: center; gap: 1rem; margin: 0; }
+.row-filter label { margin: 0; }
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.chart-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #EAEFEA;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.span-2 { grid-column: span 2; }
+.span-full { grid-column: 1 / -1; }
+
+.chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #F4F7F6; padding-bottom: 0.8rem;}
+.chart-header h3 { font-size: 1.1rem; color: #333; margin: 0; }
+.info-icon { cursor: help; opacity: 0.6; }
+
+.chart-body { flex-grow: 1; min-height: 250px; }
+.large-chart { min-height: 350px; }
+
+.canvas-placeholder {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8FAF9;
+    border: 1px dashed #D1D9D4;
+    border-radius: 6px;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   VUE COMPARATEUR
+   ========================================================================== */
+.text-center { text-align: center; }
+
+.comparator-selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.selector-box {
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #EAEFEA;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    width: 350px;
+    text-align: center;
+    position: relative;
+}
+
+.academy-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+.badge-a { background-color: #217346; } /* Vert de l'académie A */
+.badge-b { background-color: #0B572B; } /* Vert foncé de l'académie B */
+
+.select-large { font-size: 1.2rem; padding: 0.8rem; text-align: center; font-weight: 600; }
+
+.vs-circle {
+    width: 60px;
+    height: 60px;
+    background: #F4F7F6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #888;
+    border: 2px solid #EAEFEA;
+}
+
+.comparison-results { max-width: 900px; margin: 0 auto; background: #FFFFFF; border-radius: 12px; padding: 2rem; border: 1px solid #EAEFEA;}
+
+.comparison-row { margin-bottom: 2rem; }
+.comparison-row:last-child { margin-bottom: 0; }
+
+.comp-title { text-align: center; font-weight: 600; color: #555; margin-bottom: 1rem; }
+
+.comp-bars { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+
+.comp-stat { display: flex; align-items: center; gap: 1rem; flex: 1; }
+.stat-right { justify-content: flex-end; }
+
+.stat-val { font-size: 1.2rem; font-weight: bold; width: 80px; }
+.stat-left .stat-val { color: #217346; text-align: right; }
+.stat-right .stat-val { color: #0B572B; text-align: left; }
+
+.bar-container { flex-grow: 1; height: 12px; background: #F4F7F6; border-radius: 6px; overflow: hidden; }
+.bar-container.reverse { transform: scaleX(-1); } /* Inverse la barre pour qu'elle parte du centre */
+
+.bar { height: 100%; border-radius: 6px; }
+.fill-a { background-color: #217346; }
+.fill-b { background-color: #0B572B; }
+
+
+
+
+/* ==========================================================================
+   PAGE CATALOGUE DE DONNÉES (Téléchargements)
+   ========================================================================== */
+
+/* Bannière d'information (Licence) */
+.license-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #F0F4F8; /* Bleu/gris très clair pour contraster avec le vert */
+    border-left: 4px solid #4A90E2;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto; /* Centré avec une marge en bas */
+}
+
+.license-info .info-icon {
+    font-size: 1.5rem;
+}
+
+.license-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Grille du catalogue */
+.data-catalog {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto; /* Centre la liste au milieu de la page */
+}
+
+/* Carte d'un jeu de données */
+.dataset-card {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid #EAEFEA;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+.dataset-card:hover {
+    border-color: #217346;
+    box-shadow: 0 8px 25px rgba(33, 115, 70, 0.08);
+    transform: translateY(-2px);
+}
+
+.dataset-icon {
+    font-size: 2.5rem;
+    margin-right: 2rem;
+    opacity: 0.8;
+}
+
+.dataset-content {
+    flex-grow: 1;
+}
+
+.dataset-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #0B572B;
+    font-size: 1.2rem;
+}
+
+.dataset-content p {
+    margin: 0 0 1rem 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Métadonnées (les petites pilules grises) */
+.dataset-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.meta-tag {
+    background-color: #F4F7F6;
+    color: #555;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #D1D9D4;
+}
+
+.meta-tag.format-csv {
+    background-color: #E6F4EA;
+    color: #217346;
+    border-color: #A8D5BA;
+    font-weight: 700;
+}
+
+/* Action de téléchargement */
+.dataset-action {
+    margin-left: 2rem;
+}
+
+.btn-download {
+    display: inline-block; /* Important pour un lien <a> déguisé en bouton */
+    padding: 0.8rem 1.5rem;
+    white-space: nowrap;
+}

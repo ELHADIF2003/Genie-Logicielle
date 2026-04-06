@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nettoyer datasets</title>
+    <link rel="stylesheet" href="admin.css">
+
+    </head>
+
+    <main class="admin-main">
+    
+
+    <header class="top-navbar">
+            <div class="navbar-left">
+                <a href="admin_dashboard.html" class="btn-back">
+                    <span class="icon">⬅</span> Retour à l'accueil
+                </a>
+            </div>
+            
+            <div class="navbar-right">
+                <div class="admin-profile">
+                    <div class="avatar-circle">AD</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Admin Principal</span>
+                        <span class="profile-role">Super Admin</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <a href="connexion.html" class="btn-logout">Déconnexion</a>
+            </div>
+        </header>
+
+        
+
+    <div class="main-header">
+        <h1>Nettoyage avancé des données</h1>
+        <p>Importez, configurez vos règles de nettoyage et validez le résultat avant sauvegarde.</p>
+    </div>
+
+    <section class="dashboard-section step-section">
+        <div class="step-header">
+            <span class="step-number">1</span>
+            <h3 class="section-title">Source des données</h3>
+        </div>
+        
+        <div class="config-card">
+            <div class="upload-group row-upload">
+                <input type="file" id="dataset-upload" class="file-input" accept=".csv, .xlsx">
+                <button class="btn-action btn-outline">Charger le fichier</button>
+            </div>
+
+            <div class="preview-container mt-3">
+                <div class="preview-header">
+                    <h4>Aperçu des données brutes (5 premières lignes)</h4>
+                    <span class="badge warning">Fichier non nettoyé</span>
+                </div>
+                <div class="table-scroll">
+                    <table class="admin-table data-table">
+                        <thead>
+                            <tr>
+                                <th>Code UAI</th>
+                                <th>Nom Établissement</th>
+                                <th>Académie</th>
+                                <th>Taux Réussite</th>
+                                <th>IPS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0750001A</td>
+                                <td>Lycée Fénelon  </td> <td>Paris</td>
+                                <td>98.5</td>
+                                <td></td> </tr>
+                            <tr>
+                                <td>0750001A</td> <td>Lycée Fénelon</td>
+                                <td>Paris</td>
+                                <td>98.5</td>
+                                <td>142.3</td>
+                            </tr>
+                            <tr>
+                                <td>0690025B</td>
+                                <td>lycée du parc</td> <td>Lyon</td>
+                                <td>99.0</td>
+                                <td>151.2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section step-section">
+        <div class="step-header">
+            <span class="step-number">2</span>
+            <h3 class="section-title">Règles de nettoyage</h3>
+        </div>
+
+        <div class="cleaning-grid">
+            <div class="config-card">
+                <h4>Nettoyage global</h4>
+                <label class="checkbox-container">
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                    Supprimer les lignes en double (Doublons exacts)
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                    Supprimer les espaces superflus (Trim)
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    Mettre tous les textes en majuscules
+                </label>
+            </div>
+
+            <div class="config-card">
+                <h4>Valeurs manquantes ou vides</h4>
+                <div class="form-group">
+                    <label>Action à effectuer pour les cellules vides :</label>
+                    <select class="form-select">
+                        <option>Ne rien faire</option>
+                        <option>Supprimer la ligne entière</option>
+                        <option>Remplacer par "0" (Données numériques)</option>
+                        <option>Remplacer par "N/A" (Texte)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="config-card full-width">
+                <h4>Suppression de colonnes</h4>
+                <p class="text-muted">Sélectionnez les colonnes que vous souhaitez retirer du jeu de données.</p>
+                <div class="columns-selector">
+                    <label class="column-chip"><input type="checkbox"> Code UAI</label>
+                    <label class="column-chip"><input type="checkbox"> Nom Établissement</label>
+                    <label class="column-chip"><input type="checkbox"> Académie</label>
+                    <label class="column-chip"><input type="checkbox"> Taux Réussite</label>
+                    <label class="column-chip checked"><input type="checkbox" checked> IPS</label> </div>
+            </div>
+        </div>
+
+        <div class="action-center mt-3">
+            <button class="btn-action btn-large">🚀 Lancer le nettoyage</button>
+        </div>
+    </section>
+
+    <section class="dashboard-section step-section result-section">
+        <div class="step-header">
+            <span class="step-number success-bg">✓</span>
+            <h3 class="section-title">Résultats et Sauvegarde</h3>
+        </div>
+
+        <div class="kpi-grid mb-3">
+            <div class="kpi-card">
+                <h4>Doublons supprimés</h4>
+                <span class="status-text success">- 1 ligne</span>
+            </div>
+            <div class="kpi-card">
+                <h4>Valeurs vides corrigées</h4>
+                <span class="status-text success">1 correction</span>
+            </div>
+            <div class="kpi-card">
+                <h4>Colonnes retirées</h4>
+                <span class="status-text warning">1 colonne (IPS)</span>
+            </div>
+            <div class="kpi-card">
+                <h4>Lignes finales</h4>
+                <span class="status-text neutral">2 lignes prêtes</span>
+            </div>
+        </div>
+
+        <div class="config-card">
+            <div class="preview-header">
+                <h4>Aperçu du jeu de données nettoyé</h4>
+                <span class="badge success">Prêt à être sauvegardé</span>
+            </div>
+            <div class="table-scroll">
+                <table class="admin-table data-table">
+                    <thead>
+                        <tr>
+                            <th>Code UAI</th>
+                            <th>Nom Établissement</th>
+                            <th>Académie</th>
+                            <th>Taux Réussite</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0750001A</td>
+                            <td>Lycée Fénelon</td> <td>Paris</td>
+                            <td>98.5</td>
+                        </tr>
+                        <tr>
+                            <td>0690025B</td>
+                            <td>Lycée du Parc</td> <td>Lyon</td>
+                            <td>99.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="final-actions mt-3">
+            <button class="btn-action btn-outline-danger">Annuler et recommencer</button>
+            <button class="btn-action btn-validate btn-large">💾 Sauvegarder dans la base de données</button>
+        </div>
+    </section>
+</main>
+</html>
