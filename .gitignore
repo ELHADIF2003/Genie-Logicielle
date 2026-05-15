@@ -1,0 +1,39 @@
+﻿# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# === Environnements virtuels ===
+venv/
+env/
+.venv/
+ENV/
+
+# === Secrets ===
+.env
+*.env.local
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Uploads ===
+uploads/
+*.log
+
+# === Build ===
+dist/
+build/
