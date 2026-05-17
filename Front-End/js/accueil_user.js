@@ -1,60 +1,110 @@
-
 /**
  * Logique de la page accueil_user.html
- * - Charge les KPI nationaux dans le hero
- * - Remplit le select des académies dynamiquement
+ * - KPI nationaux (avec filtre par année)
+ * - 6 indicateurs détaillés
+ * - Filtre Année fonctionnel
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await Promise.all([
-        loadNationalKPI(),
-        loadAcademiesSelect(),
-    ]);
+    bindYearFilter();
+    bindRefreshButton();
+    await loadNationalKPI();
 });
 
 
+// ============================================================
+// FILTRE PAR ANNÉE
+// ============================================================
+
+function bindYearFilter() {
+    const yearSelect = document.getElementById('filter-year');
+    if (!yearSelect) return;
+
+    // Recharger automatiquement quand l'année change
+    yearSelect.addEventListener('change', async () => {
+        await loadNationalKPI();
+    });
+}
+
+
+function bindRefreshButton() {
+    const btn = document.getElementById('btn-refresh');
+    if (!btn) return;
+
+    btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        const originalText = btn.textContent;
+        btn.textContent = '⏳ Chargement...';
+
+        try {
+            await loadNationalKPI();
+        } finally {
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
+    });
+}
+
+
+// ============================================================
+// CHARGEMENT DES KPI NATIONAUX
+// ============================================================
+
 async function loadNationalKPI() {
     try {
-        const data = await API.getNationalIndicators();
+        // Récupérer l'année sélectionnée
+        const yearSelect = document.getElementById('filter-year');
+        const annee = yearSelect ? parseInt(yearSelect.value) : null;
 
-        // Mettre à jour le titre de la section avec l'année réelle
-        const titre = document.querySelector('.overview-section .section-title');
+        const data = await API.getNationalIndicators(annee);
+        console.log('[accueil_user.js] KPI chargés pour', data.annee, ':', data);
+
+        // === Mettre à jour le titre avec l'année ===
+// === Mettre à jour le titre avec l'année ===
+        const titre = document.getElementById('overview-title');
         if (titre) {
             titre.textContent = `Aperçu National (${data.annee})`;
         }
 
-        // Mettre à jour les 3 KPI
-        const kpiValues = document.querySelectorAll('.overview-section .kpi-value');
-        if (kpiValues.length >= 3) {
-            kpiValues[0].textContent = `${data.taux_reussite_national.toFixed(1)} %`;
-            kpiValues[1].textContent = data.ips_moyen_national.toFixed(1);
-            kpiValues[2].textContent = data.nb_academies;
+        // === KPI principaux du hero (3 cartes) ===
+        setKPI('kpi-reussite', data.taux_reussite_national, ' %');
+        setKPI('kpi-ips', data.ips_moyen_national, '');
+        const nbAcadEl = document.getElementById('kpi-nb-acad');
+        if (nbAcadEl) nbAcadEl.textContent = data.nb_academies;
+
+        // === KPI détaillés (6 cartes) ===
+        setKPI('kpi-mention', data.taux_mention_national, ' %');
+        setKPI('kpi-echec', data.taux_echec_national, ' %');
+        setKPI('kpi-ips-stddev', data.ips_ecart_type, '');
+        setKPI('kpi-taux-f', data.taux_reussite_filles, ' %');
+        setKPI('kpi-taux-m', data.taux_reussite_garcons, ' %');
+
+        // Écart F/G : signe + couleur
+        const ecartEl = document.getElementById('kpi-ecart-fg');
+        if (ecartEl) {
+            if (data.ecart_filles_garcons === null || data.ecart_filles_garcons === undefined) {
+                ecartEl.textContent = 'N/A';
+                ecartEl.style.color = '#666';
+            } else {
+                const v = data.ecart_filles_garcons;
+                const signe = v > 0 ? '+' : '';
+                ecartEl.textContent = `${signe}${v.toFixed(1)}`;
+                ecartEl.style.color = v > 0 ? '#217346' : (v < 0 ? '#DC2626' : '#666');
+            }
         }
+
     } catch (error) {
         console.error('Erreur chargement KPI :', error);
     }
 }
 
 
-async function loadAcademiesSelect() {
-    try {
-        const academies = await API.getAcademies();
-
-        // Le 2e select dans .global-filters (Académie)
-        const select = document.querySelectorAll('.global-filters .form-select')[1];
-        if (!select) return;
-
-        // Vider et ajouter l'option "Toute la France" par défaut
-        select.innerHTML = '<option value="">Toute la France</option>';
-
-        // Ajouter chaque académie
-        academies.forEach(acad => {
-            const option = document.createElement('option');
-            option.value = acad.idacademie;
-            option.textContent = acad.nomacademie;
-            select.appendChild(option);
-        });
-    } catch (error) {
-        console.error('Erreur chargement académies :', error);
+function setKPI(elementId, value, suffix = '') {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    if (value === null || value === undefined) {
+        el.textContent = 'N/A';
+    } else {
+        el.textContent = value.toFixed(1) + suffix;
     }
 }

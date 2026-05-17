@@ -49,22 +49,33 @@ def get_stats(db: Session = Depends(get_db)):
 def list_datasets(db: Session = Depends(get_db)):
     """Liste tous les datasets avec leurs stats."""
     from sqlalchemy import func
-    from app.models import Lycee, Indicateur
+    from app.models import Lycee, Indicateur, ResultatBac
 
     datasets = crud_dataset.get_all_datasets(db)
+
+    # On calcule le total de resultats bac une seule fois
+    # (la table ResultatBac n'a pas de FK vers Dataset dans le schema actuel)
+    total_resultats_bac = db.query(func.count(ResultatBac.idresultat)).scalar() or 0
+
     result = []
     for ds in datasets:
-        # Compter les lycees lies a ce dataset
+        # Nombre de lycees lies a ce dataset
         nb_lycees = db.query(func.count(Lycee.idlycee)).filter(
             Lycee.iddataset == ds.iddataset
         ).scalar() or 0
 
-        # Compter les indicateurs lies
-        nb_ind = db.query(func.count(Indicateur.idindicateur)).filter(
-            Indicateur.iddataset == ds.iddataset
-        ).scalar() or 0
+        # Type du dataset (deduit du nom)
+        nom_lower = (ds.nomdataset or "").lower()
+        is_bac = "bac" in nom_lower or "resultat" in nom_lower
 
-        nb_lignes = nb_lycees + nb_ind
+        # Si dataset bac : on affiche le total de ResultatBac (compteur global)
+        # Si dataset ips/lycee : on affiche le nb de lycees
+        if is_bac:
+            nb_lignes = total_resultats_bac
+            type_dataset = "bac"
+        else:
+            nb_lignes = nb_lycees
+            type_dataset = "lycees"
 
         result.append({
             "iddataset": ds.iddataset,
@@ -74,7 +85,7 @@ def list_datasets(db: Session = Depends(get_db)):
             "etat": ds.etat,
             "nb_lignes": nb_lignes,
             "nb_lycees": nb_lycees,
-            "nb_indicateurs": nb_ind,
+            "type": type_dataset,
         })
     return result
 
@@ -158,7 +169,18 @@ async def import_dataset(
             status_code=500,
             detail=f"Erreur pendant l'import : {exc}",
         )
-    finally:
-        save_path.unlink(missing_ok=True)
+    # Au lieu de supprimer le fichier, on le garde pour permettre
+    # le re-telechargement plus tard depuis la page data.html
+    if save_path.exists() and result and "dataset" in result:
+        ds_id = result["dataset"].iddataset
+        permanent_path = UPLOAD_DIR / f"dataset_{ds_id}{ext}"
+        try:
+            # Si un ancien fichier existait deja pour ce dataset, on le remplace
+            if permanent_path.exists():
+                permanent_path.unlink()
+            save_path.rename(permanent_path)
+        except Exception:
+            # Si on n'arrive pas a renommer, au moins on supprime le temp
+            save_path.unlink(missing_ok=True)
 
     return result

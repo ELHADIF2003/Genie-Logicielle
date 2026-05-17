@@ -124,6 +124,22 @@ async function getTopAcademies(critere = 'ips', n = 5, annee = null) {
     return await apiFetch(url);
 }
 
+async function getRegions(annee = null) {
+    const query = annee ? `?annee=${annee}` : '';
+    return await apiFetch(`/indicateurs/regions${query}`);
+}
+
+async function getCorrelationRegions(annee = null) {
+    const query = annee ? `?annee=${annee}` : '';
+    return await apiFetch(`/indicateurs/correlation-regions${query}`);
+}
+
+async function getTopRegions(critere = 'ips', n = 5, annee = null) {
+    let url = `/indicateurs/top-regions?critere=${critere}&n=${n}`;
+    if (annee) url += `&annee=${annee}`;
+    return await apiFetch(url);
+}
+
 // --- Admin ---
 async function getAdminStats() {
     return await apiFetch('/admin/stats');
@@ -146,6 +162,6 @@ window.API = {
     getComparateur, getCorrelation, getEvolution, getTopAcademies,
     // Admin
     getAdminStats, getDatasets,
-    getDatasetsPublics,getDownloadUrl,
+    getDatasetsPublics,getDownloadUrl,getRegions, getCorrelationRegions, getTopRegions,
 };
 

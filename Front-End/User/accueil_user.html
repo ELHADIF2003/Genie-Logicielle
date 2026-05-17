@@ -41,52 +41,64 @@
 
             <div class="global-filters">
                 <div class="filter-group">
-                    <label>Année</label>
-                    <select class="form-select">
-                        <option>2023 - 2024</option>
-                        <option>2022 - 2023</option>
-                        <option>Toutes les années</option>
+                    <label>Année scolaire</label>
+                    <select class="form-select" id="filter-year">
+                        <option value="2024">2023 - 2024</option>
+                        <option value="2023">2022 - 2023</option>
+                        <option value="2022">2021 - 2022</option>
+                        <option value="2021">2020 - 2021</option>
                     </select>
                 </div>
-                <div class="filter-group">
-                    <label>Académie</label>
-                    <select class="form-select">
-                        <option>Toute la France</option>
-                        <option>Paris</option>
-                        <option>Créteil</option>
-                        <option>Versailles</option>
-                        <option>Lyon</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Indicateur clé</label>
-                    <select class="form-select">
-                        <option>Taux de réussite au Bac</option>
-                        <option>IPS Moyen</option>
-                        <option>Taux de mention</option>
-                    </select>
-                </div>
-                <button class="btn-user-primary">Actualiser les données</button>
+                <button class="btn-user-primary" id="btn-refresh">Actualiser les données</button>
             </div>
         </section>
 
+       <section class="overview-section">
+    <h2 class="section-title" id="overview-title">Aperçu National</h2>
+    <div class="kpi-grid">
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-reussite">—</span>
+            <span class="kpi-label">Taux de réussite national</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-ips">—</span>
+            <span class="kpi-label">IPS Moyen National</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-nb-acad">—</span>
+            <span class="kpi-label">Académies analysées</span>
+        </div>
+    </div>
+</section>
         <section class="overview-section">
-            <h2 class="section-title">Aperçu National (2023-2024)</h2>
-            <div class="kpi-grid">
-                <div class="kpi-card user-kpi">
-                    <span class="kpi-value">91.4 %</span>
-                    <span class="kpi-label">Taux de réussite national</span>
-                </div>
-                <div class="kpi-card user-kpi">
-                    <span class="kpi-value">103.5</span>
-                    <span class="kpi-label">IPS Moyen National</span>
-                </div>
-                <div class="kpi-card user-kpi">
-                    <span class="kpi-value">30</span>
-                    <span class="kpi-label">Académies analysées</span>
-                </div>
-            </div>
-        </section>
+    <h2 class="section-title">Indicateurs détaillés</h2>
+    <div class="kpi-grid kpi-grid-detailed">
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-mention">—</span>
+            <span class="kpi-label">Taux de mention (TB + B + AB)</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-echec">—</span>
+            <span class="kpi-label">Taux d'échec</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-ecart-fg">—</span>
+            <span class="kpi-label">Écart Filles/Garçons (points)</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-ips-stddev">—</span>
+            <span class="kpi-label">Écart-type IPS (inégalités)</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-taux-f">—</span>
+            <span class="kpi-label">Taux réussite Filles</span>
+        </div>
+        <div class="kpi-card user-kpi">
+            <span class="kpi-value" id="kpi-taux-m">—</span>
+            <span class="kpi-label">Taux réussite Garçons</span>
+        </div>
+    </div>
+</section>
 
         <section class="features-section">
             <h2 class="section-title">Outils d'exploration</h2>

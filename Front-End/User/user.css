@@ -642,3 +642,18 @@ a { text-decoration: none; }
 .leaflet-popup-content strong {
     color: #0B572B;
 }
+
+/* ==========================================================================
+   GRILLE KPI DETAILLES (6 cartes au lieu de 3)
+   ========================================================================== */
+.kpi-grid-detailed {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.kpi-grid-detailed .kpi-value {
+    font-size: 2rem; /* un peu plus petit pour la version détaillée */
+}
+
+.kpi-grid-detailed .kpi-card {
+    padding: 1.5rem;
+}

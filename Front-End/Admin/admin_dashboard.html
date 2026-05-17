@@ -14,17 +14,13 @@
         </div>
         <nav class="sidebar-nav">
             <ul>
-                <li><a href="#" class="active">Tableau de bord</a></li>
+                <li><a href="admin_dashboard.html" class="active">Tableau de bord</a></li>
                 <li><a href="import.html">Importer les datasets</a></li>
-                <li><a href="#">Mettre à jour les données</a></li>
                 <li><a href="nettoyage.html">Nettoyer les données</a></li>
-                <li><a href="fusion.html">Fusionner les datasets</a></li>
-                <li><a href="#">Valider les données</a></li>
-                <li><a href="#">Gérer la base de données</a></li>
             </ul>
         </nav>
         <div class="sidebar-footer">
-            <a href="connexion.html" class="back-home">⬅ Déconnexion</a>
+            <a href="#" class="back-home" id="link-logout">⬅ Déconnexion</a>
         </div>
     </aside>
 
@@ -101,20 +97,6 @@
             </div>
         </section>
 
-        <section class="dashboard-section">
-            <h3 class="section-title">Actions rapides</h3>
-            <div class="actions-card">
-                <div class="upload-group">
-                    <input type="file" id="dataset-upload" class="file-input">
-                </div>
-                <div class="action-buttons">
-                    <button class="btn-action">Importer</button>
-                    <button class="btn-action">Démarrer le nettoyage</button>
-                    <button class="btn-action">Fusionner les datasets</button>
-                    <button class="btn-action btn-validate">Valider les données</button>
-                </div>
-            </div>
-        </section>
 
     </main>
 <script src="../js/api.js"></script>

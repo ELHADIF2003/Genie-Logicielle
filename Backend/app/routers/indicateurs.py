@@ -14,7 +14,9 @@ from app.schemas.indicateur import (
     EvolutionPoint,
     IndicateursAcademie,
     IndicateursNationaux,
+    IndicateursRegion,           
     PointCorrelation,
+    PointCorrelationRegion,      
 )
 
 
@@ -138,7 +140,11 @@ def list_public_datasets(db: Session = Depends(get_db)):
 
 @router.get("/datasets-publics/{dataset_id}/download")
 def download_dataset(dataset_id: int, db: Session = Depends(get_db)):
-    """Telecharge le CSV original d'un dataset."""
+    """
+    Telecharge le CSV d'un dataset.
+    Cherche d'abord dans uploads/ (datasets importes via admin),
+    puis dans data/ (datasets initiaux).
+    """
     from fastapi.responses import FileResponse
     from app.config import BASE_DIR
     from app.crud import dataset as crud_dataset
@@ -147,29 +153,67 @@ def download_dataset(dataset_id: int, db: Session = Depends(get_db)):
     if ds is None:
         raise HTTPException(status_code=404, detail="Dataset introuvable")
 
-    # Mapping nom dataset -> fichier CSV
+    # 1. Chercher d'abord dans uploads/ (datasets uploades via l'admin)
+    uploads_dir = BASE_DIR / "uploads"
+    candidate = uploads_dir / f"dataset_{dataset_id}.csv"
+    if candidate.exists():
+        # Nom convivial pour le telechargement
+        download_name = f"{ds.nomdataset or 'dataset'}.csv".replace(" ", "_")
+        return FileResponse(
+            path=str(candidate),
+            media_type="text/csv",
+            filename=download_name,
+        )
+
+    # 2. Sinon, mapper sur les CSV initiaux dans data/
     data_dir = BASE_DIR / "data"
     file_mapping = {
         "ips-lycees": data_dir / "IPS-Lycees.csv",
         "resultats-bac": data_dir / "Résultat-Bac-Par-Academie.csv",
+        "resultat-bac": data_dir / "Résultat-Bac-Par-Academie.csv",
     }
 
-    # Recherche tolérante (en minuscules, sans accents)
     nom_normalise = (ds.nomdataset or "").lower().replace("é", "e")
-    csv_path = None
     for key, path in file_mapping.items():
-        if key in nom_normalise:
-            csv_path = path
-            break
+        if key in nom_normalise and path.exists():
+            return FileResponse(
+                path=str(path),
+                media_type="text/csv",
+                filename=path.name,
+            )
 
-    if csv_path is None or not csv_path.exists():
-        raise HTTPException(
-            status_code=404,
-            detail="Fichier CSV non disponible pour ce dataset",
-        )
-
-    return FileResponse(
-        path=str(csv_path),
-        media_type="text/csv",
-        filename=csv_path.name,
+    raise HTTPException(
+        status_code=404,
+        detail="Fichier CSV non disponible pour ce dataset",
     )
+# ============================================================
+# ENDPOINTS REGIONAUX (niveau geographique = Régional)
+# ============================================================
+
+@router.get("/regions", response_model=List[IndicateursRegion])
+def indicateurs_regions(
+    annee: int | None = Query(None, description="Annee (defaut : plus recente)"),
+    db: Session = Depends(get_db),
+):
+    """Stats agregees par region academique."""
+    return crud_indicateur.get_indicators_by_region(db, annee=annee)
+
+
+@router.get("/correlation-regions", response_model=List[PointCorrelationRegion])
+def correlation_regions(
+    annee: int | None = Query(None, description="Annee (defaut : plus recente)"),
+    db: Session = Depends(get_db),
+):
+    """Points (IPS, taux_reussite) pour scatter plot, agreges par region."""
+    return crud_indicateur.get_correlation_points_regions(db, annee=annee)
+
+
+@router.get("/top-regions", response_model=List[IndicateursRegion])
+def top_regions(
+    critere: str = Query("ips", description="Critere : 'ips', 'taux_reussite', 'taux_mention'"),
+    n: int = Query(5, ge=1, le=20, description="Nombre de regions"),
+    annee: int | None = Query(None, description="Annee (defaut : plus recente)"),
+    db: Session = Depends(get_db),
+):
+    """Top N regions selon un critere."""
+    return crud_indicateur.get_top_regions(db, critere=critere, n=n, annee=annee)

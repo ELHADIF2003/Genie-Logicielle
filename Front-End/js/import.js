@@ -1,13 +1,14 @@
 /**
  * Logique de la page import.html (Admin)
- * - Upload de fichier CSV
- * - Affichage du résultat d'import
+ * - Upload de fichier CSV via drag & drop ou sélection
+ * - Affichage de l'aperçu avant import
+ * - Import effectif via API
  */
 
 let fileToUpload = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Protection
+    // === Protection admin ===
     if (!API.isAuthenticated()) {
         window.location.href = 'connexion.html';
         return;
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
+    console.log('[import.js] Page admin import chargée, branchement des handlers...');
     bindFileInput();
     bindDropZone();
     bindImportButton();
@@ -30,18 +32,31 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
+// ============================================================
+// SÉLECTION DE FICHIER VIA "Parcourir les fichiers"
+// ============================================================
+
 function bindFileInput() {
     const input = document.getElementById('file-upload');
-    if (!input) return;
+    if (!input) {
+        console.error('[import.js] Input #file-upload introuvable !');
+        return;
+    }
 
     input.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
+        console.log('[import.js] Changement détecté sur l\'input', e.target.files);
+        if (e.target.files && e.target.files.length > 0) {
             fileToUpload = e.target.files[0];
+            console.log('[import.js] Fichier sélectionné :', fileToUpload.name);
             updateFileTable();
         }
     });
 }
 
+
+// ============================================================
+// DRAG & DROP
+// ============================================================
 
 function bindDropZone() {
     const dropZone = document.getElementById('drop-zone');
@@ -62,15 +77,24 @@ function bindDropZone() {
 
         if (e.dataTransfer.files.length > 0) {
             fileToUpload = e.dataTransfer.files[0];
+            console.log('[import.js] Fichier déposé :', fileToUpload.name);
             updateFileTable();
         }
     });
 }
 
 
+// ============================================================
+// AFFICHAGE DU FICHIER EN ATTENTE
+// ============================================================
+
 function updateFileTable() {
     const tbody = document.querySelector('.admin-table tbody');
-    if (!tbody || !fileToUpload) return;
+    if (!tbody) {
+        console.error('[import.js] Table tbody introuvable !');
+        return;
+    }
+    if (!fileToUpload) return;
 
     const sizeMo = (fileToUpload.size / (1024 * 1024)).toFixed(2);
 
@@ -79,9 +103,15 @@ function updateFileTable() {
             <td>${escapeHtml(fileToUpload.name)}</td>
             <td>${sizeMo} Mo</td>
             <td><span class="badge success">Prêt</span></td>
-            <td><button class="btn-small action-delete" onclick="clearFile()">Retirer</button></td>
+            <td><button type="button" class="btn-small action-delete" id="btn-clear-file">Retirer</button></td>
         </tr>
     `;
+
+    // Rebinder le bouton "Retirer"
+    const clearBtn = document.getElementById('btn-clear-file');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearFile);
+    }
 }
 
 
@@ -93,6 +123,10 @@ function clearFile() {
     if (input) input.value = '';
 }
 
+
+// ============================================================
+// IMPORT (envoi au back-end)
+// ============================================================
 
 function bindImportButton() {
     const btn = document.querySelector('.action-footer .btn-validate');
@@ -108,6 +142,7 @@ function bindImportButton() {
         if (!nomDataset) return;
 
         btn.disabled = true;
+        const originalText = btn.textContent;
         btn.textContent = '⏳ Import en cours...';
 
         try {
@@ -145,11 +180,15 @@ function bindImportButton() {
             alert('❌ Erreur lors de l\'import : ' + error.message);
         } finally {
             btn.disabled = false;
-            btn.textContent = 'Lancer l\'importation de tous les fichiers';
+            btn.textContent = originalText;
         }
     });
 }
 
+
+// ============================================================
+// DÉCONNEXION
+// ============================================================
 
 function bindLogout() {
     const logoutLink = document.querySelector('.btn-logout');
