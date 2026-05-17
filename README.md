@@ -153,33 +153,39 @@ python -m http.server 5500
 
 Le front est accessible sur : **http://127.0.0.1:5500/Front-End/Home/home.html**
 
-## 🗂️ Architecture du projet
+## 📁 Architecture du projet
+
+```
 Genie-Logicielle/
-├── Backend/                    # API FastAPI
+├── Backend/                          # API FastAPI
 │   └── app/
-│       ├── main.py            # Point d'entrée FastAPI
-│       ├── config.py          # Configuration (.env)
-│       ├── database.py        # Connexion SQLAlchemy
-│       ├── security.py        # bcrypt + JWT
-│       ├── models/            # Modèles ORM
-│       ├── schemas/           # Schémas Pydantic
-│       ├── routers/           # Endpoints REST
-│       ├── crud/              # Requêtes BDD
-│       ├── services/          # Logique métier (ETL)
-│       └── scripts/           # Scripts utilitaires
-├── Front-End/                  # Pages HTML/CSS/JS
-│   ├── Home/                  # Page d'accueil
-│   ├── User/                  # Pages utilisateur
-│   ├── Admin/                 # Pages administrateur
-│   ├── js/                    # Scripts partagés
-│   └── data/                  # GeoJSON (carte)
+│       ├── main.py                   # Point d'entrée FastAPI
+│       ├── config.py                 # Configuration (.env)
+│       ├── database.py               # Connexion SQLAlchemy
+│       ├── security.py               # bcrypt + JWT
+│       ├── models/                   # Modèles ORM
+│       ├── schemas/                  # Schémas Pydantic
+│       ├── routers/                  # Endpoints REST
+│       ├── crud/                     # Requêtes BDD
+│       ├── services/                 # Logique métier (ETL)
+│       └── scripts/                  # Scripts utilitaires
+│
+├── Front-End/                        # Pages HTML/CSS/JS
+│   ├── Home/                         # Page d'accueil
+│   ├── User/                         # Pages utilisateur
+│   ├── Admin/                        # Pages administrateur
+│   ├── js/                           # Scripts partagés
+│   └── data/                         # GeoJSON (carte)
+│
 ├── database/
-│   └── BDD.sql                # Script de création des tables
-├── data/                       # CSV sources (non commités)
-├── .env.example                # Modèle des variables d'env
+│   └── BDD.sql                       # Script de création des tables
+│
+├── data/                             # CSV sources (non commités)
+├── .env.example                      # Modèle des variables d'env
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 ## 📈 Indicateurs calculés
 
 Le système calcule automatiquement :
