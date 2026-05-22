@@ -12,7 +12,7 @@ try:
         port=os.getenv("5432"),
         database=os.getenv("Projet_GL")
     )
-    print("✅ Félicitations ! Python arrive à se connecter à PostgreSQL.")
+    print("Félicitations ! Python arrive à se connecter à PostgreSQL.")
     connection.close()
 except Exception as e:
-    print(f"❌ Échec : {e}")
+    print(f" Échec : {e}")
